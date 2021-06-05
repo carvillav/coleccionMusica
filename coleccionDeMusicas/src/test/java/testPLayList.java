@@ -1,8 +1,12 @@
+import filtrado.EstrategiasDeCriterioDeFiltrado;
+import filtrado.FiltradoPorArtista;
+import musica.Coleccion;
+import musica.Pista;
+import musica.PlayList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Collections;
 import java.util.List;
 
 public class testPLayList {
@@ -15,11 +19,11 @@ public class testPLayList {
 
     @Before
     public void init(){
-        //Pista(String nombre, int id, int duracion, String artista, String albun, int anio, String genero)
+        //musica.Pista(String nombre, int id, int duracion, String artista, String albun, int anio, String genero)
         cancionPop = new Pista("Thriller",1, 240,"Michael Jackson","Thriller" , 1982, "Pop");
         cancionSalsa = new Pista("Valio la pena", 2, 230, "Marc Anthony", "Valio la pena", 2004, "Salsa");
         cancionRomantica = new Pista("El alma al aire", 3, 250, "Alejandro Sanz", "El alma al aire", 2000, "Balada");
-        //PlayList(String nombre)
+        //musica.PlayList(String nombre)
         miPL1 = new PlayList("Mis favoritos");
         miPL2 = new PlayList("Los que mas que gustan");
         miPL2.addElemento(cancionRomantica, cancionSalsa);
@@ -53,8 +57,12 @@ public class testPLayList {
         EstrategiasDeCriterioDeFiltrado filtarAlejandroSans = new FiltradoPorArtista();
         List<Coleccion> listaFiltrada = filtarAlejandroSans.filtrar(miPL1, "Alejandro Sanz");
         for (Coleccion unaColeccion : listaFiltrada) {
-            System.out.println("Las canciones filtradas son: "+ unaColeccion.toString());
-            //me devuelve toda la descripcion de cancionRomantica2 pero la de cancionRomantica me devuelve como PlayList@7c53a9eb
-        }
+             unaColeccion.mostrar();
+            }
+    }
+
+    @Test
+    public void mostrarMiPlayList(){
+        miPL1.mostrar();
     }
 }
