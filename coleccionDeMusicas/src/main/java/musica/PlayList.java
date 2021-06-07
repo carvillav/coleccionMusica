@@ -35,21 +35,20 @@ public class PlayList extends Coleccion {
 
     @Override
     public void mostrar(){
-        for (Coleccion unaColeccion : elementos) {
-            unaColeccion.mostrar();
-        }
+        elementos.forEach(Coleccion::mostrar);
     }
 
     @Override
     public Boolean coincideArtista(String nombreArtista){
-        return this.elementos.stream().filter(elemento -> elemento.coincideArtista(nombreArtista)).count() >0;
+        return this.elementos.stream().anyMatch(elemento -> elemento.coincideArtista(nombreArtista));
     }
 
     @Override
-    public Boolean coincideNombre(String nombre){
-        return this.elementos.stream().filter(elemento -> elemento.coincideNombre(nombre)).count() >0;
+    public Boolean coincideGenero(String nombre){
+        return this.elementos.stream().anyMatch(elemento -> elemento.coincideGenero(nombre));
     }
 
+    @Override
     public List<Coleccion> getElementos() {
         return elementos;
     }

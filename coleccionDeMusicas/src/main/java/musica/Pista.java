@@ -1,5 +1,8 @@
 package musica;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Pista extends Coleccion {
     private int id;
     private int duracion;
@@ -34,8 +37,8 @@ public class Pista extends Coleccion {
     }
 
     @Override
-    public Boolean coincideNombre(String nombre){
-        return this.albun.equals(nombre);
+    public Boolean coincideGenero(String nombre){
+        return this.genero.equals(nombre);
     }
 
     public String toString(){
@@ -51,6 +54,11 @@ public class Pista extends Coleccion {
     @Override
     public void mostrar(){
         System.out.println(this.toString());
+    }
+
+    @Override
+    public List<Coleccion> getElementos(){
+        return Collections.singletonList(this);
     }
 
     public int getId() {
